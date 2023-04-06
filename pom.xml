@@ -79,7 +79,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.credithc.easylogin.EasyLoginTestApplication</mainClass>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
