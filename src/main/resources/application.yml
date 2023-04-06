@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: easy-login
+  freemarker:
+    # req访问request
+    request-context-attribute: request
+    # 后缀名
+    suffix: .ftl
+    content-type: text/html
+    enabled: true
+    # 缓存配置
+    cache: false
+    # 模板加载路径 按需配置（这里就是我们上面的忽略配置）
+    template-loader-path: classpath:/templates/
+    # 编码格式
+    charset: UTF-8
+    settings:
+      # 数字格式化，无小数点
+      number_format: '0.##'
+  mvc:
+    servlet:
+      load-on-startup: 0
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+server:
+  port: 8080
+  servlet:
+    context-path:
+    encoding:
+      force: true
+
+login:
+  username: chatgpt
+  password: credithc@admin
+  token: 7cp4VkZ3Nju1AOjy
+
+thymeleaf:
+  prefix: classpath:/templates/
+  suffix: .ftl
+  cache: false
+
