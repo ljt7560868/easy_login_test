@@ -51,11 +51,14 @@ public class AuthController {
 
 
     @GetMapping("/login")
-    public ResponseEntity<?> login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password,
+    public ResponseEntity<?> login(@RequestParam(name = "username") String username,
+                                   @RequestParam(name = "password") String password,
                         HttpServletResponse response) {
         if (StringUtils.equals(this.username, username) && StringUtils.equals(this.password, password)) {
             log.info("login success, username:{}", username);
             Cookie cookie = new Cookie("AccessToken", this.token);
+            cookie.setMaxAge(60 * 60);
+            cookie.setPath("/");
             response.addCookie(cookie);
             return new ResponseEntity<>(HttpStatus.OK);
         }
