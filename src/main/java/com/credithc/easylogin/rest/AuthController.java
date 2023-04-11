@@ -32,6 +32,7 @@ public class AuthController {
 
     @RequestMapping()
     public ModelAndView view() {
+        log.info("logining--------");
         ModelAndView modelAndView = new ModelAndView("/login");
         return modelAndView;
     }
