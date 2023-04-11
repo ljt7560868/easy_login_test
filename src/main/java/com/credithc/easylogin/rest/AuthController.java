@@ -38,7 +38,7 @@ public class AuthController {
 
 
     @GetMapping("/do")
-    public Result auth(@CookieValue(name = "AccessToken") String token) {
+    public Result auth(@CookieValue(name = "AccessToken",required = false) String token) {
         if (StringUtils.equals(this.token, token)) {
             return Result.ok();
         }
