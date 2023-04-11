@@ -5,6 +5,8 @@ import com.credithc.easylogin.common.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,26 +41,26 @@ public class AuthController {
 
 
     @GetMapping("/do")
-    public Result auth(@CookieValue(name = "AccessToken",required = false) String token) {
+    public ResponseEntity<?> auth(@CookieValue(name = "AccessToken",required = false) String token) {
         if (StringUtils.equals(this.token, token)) {
-            return Result.ok();
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         log.error("token is illegal, token:{}", token);
-        return Result.fail(ResultCode.EC_401_ERROR);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 
     @GetMapping("/login")
-    public Result login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password,
+    public ResponseEntity<?> login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password,
                         HttpServletResponse response) {
         if (StringUtils.equals(this.username, username) && StringUtils.equals(this.password, password)) {
             log.info("login success, username:{}", username);
             Cookie cookie = new Cookie("AccessToken", this.token);
             response.addCookie(cookie);
-            return Result.ok();
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         log.error("login fail, username/password is illegal, username:{},password:{}", username, password);
-        return Result.fail(ResultCode.EC_400_ERROR);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
