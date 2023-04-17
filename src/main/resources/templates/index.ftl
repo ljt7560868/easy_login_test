@@ -6,44 +6,38 @@
 
     <#import "common/common.macro.ftl" as netCommon>
     <@netCommon.commonStyle />
+    <link rel="stylesheet" href="${request.contextPath}/static/adminlte/plugins/iCheck/square/blue.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-        <!-- header -->
-    <@netCommon.commonHeader />
-        <!-- left -->
-    <@netCommon.commonLeft "help" />
+<body class="hold-transition login-page">
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>使用教程</h1>
-        </section>
+    <div class="login-box">
+        <div class="login-logo">
+            <a><b>HC</b>chatGPT</a>
+        </div>
+        <form id="loginForm">
+            <div class="login-box-body">
+                <p class="login-box-msg">统一认证中心</p>
+                <div class="form-group has-feedback">
+                    <input type="text" name="username" class="form-control" placeholder="Please input username." value="chatgpt" maxlength="50" >
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" name="password" class="form-control" placeholder="Please input password." value="credithc@admin" maxlength="50" >
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="callout callout-info">
-                <h4>分布式单点登录框架</h4>
-                <br>
-                <p>
-                    <a target="_blank" href="https://github.com/xuxueli/xxl-sso">Github</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <iframe src="https://ghbtns.com/github-btn.html?user=xuxueli&repo=xxl-sso&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px" style="margin-bottom:-5px;"></iframe>
-                    <br><br>
-                    <a target="_blank" href="https://www.xuxueli.com/xxl-sso/">文档地址</a>
-                    <br><br>
-
-                </p>
-                <p></p>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button type="submit" id="btnLogin" class="btn btn-primary btn-block btn-flat">Login</button>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!-- /.content -->
+        </form>
     </div>
-    <!-- /.content-wrapper -->
 
-    <!-- footer -->
-<@netCommon.commonFooter />
-</div>
-<@netCommon.commonScript />
 </body>
+<@netCommon.commonScript />
+<script src="${request.contextPath}/static/adminlte/plugins/iCheck/icheck.min.js"></script>
+<script src="${request.contextPath}/static/js/login.1.js"></script>
+<script src="${request.contextPath}/static/js/jquery.cookie.js"></script>
 </html>

@@ -1,5 +1,6 @@
 package com.credithc.easylogin.rest;
 
+import com.credithc.easylogin.common.LoginDTO;
 import com.credithc.easylogin.common.Result;
 import com.credithc.easylogin.common.ResultCode;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @Author: lvjietao
@@ -35,35 +37,35 @@ public class AuthController {
     @RequestMapping()
     public ModelAndView view() {
         log.info("logining--------");
-        ModelAndView modelAndView = new ModelAndView("/login");
+        ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
     }
 
 
     @GetMapping("/do")
-    public ResponseEntity<?> auth(@CookieValue(name = "AccessToken",required = false) String token) {
+    public ResponseEntity<Result> auth(@CookieValue(name = "AccessToken", required = false) String token) {
         if (StringUtils.equals(this.token, token)) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(Result.fail(ResultCode.EC_401_ERROR), HttpStatus.OK);
         }
         log.error("token is illegal, token:{}", token);
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(Result.ok(), HttpStatus.UNAUTHORIZED);
     }
 
 
-    @GetMapping("/login")
-    public ResponseEntity<?> login(@RequestParam(name = "username") String username,
-                                   @RequestParam(name = "password") String password,
-                        HttpServletResponse response) {
-        if (StringUtils.equals(this.username, username) && StringUtils.equals(this.password, password)) {
+    @PostMapping("/login")
+    public ResponseEntity<Result> login(@RequestBody LoginDTO loginDTO,
+                                        HttpServletResponse response) throws IOException {
+        if (StringUtils.equals(this.username, loginDTO.getUsername()) && StringUtils.equals(this.password,
+                loginDTO.getPassword())) {
             log.info("login success, username:{}", username);
             Cookie cookie = new Cookie("AccessToken", this.token);
             cookie.setMaxAge(60 * 60);
             cookie.setPath("/");
             response.addCookie(cookie);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(Result.ok(), HttpStatus.OK);
         }
         log.error("login fail, username/password is illegal, username:{},password:{}", username, password);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Result.fail(ResultCode.EC_401_ERROR), HttpStatus.BAD_REQUEST);
     }
 
 
