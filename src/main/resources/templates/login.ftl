@@ -19,11 +19,11 @@
             <div class="login-box-body">
                 <p class="login-box-msg">统一认证中心</p>
                 <div class="form-group has-feedback">
-                    <input type="text" name="username" class="form-control" placeholder="Please input username." value="user" maxlength="50" >
+                    <input type="text" name="username" class="form-control" placeholder="Please input username." value="chatgpt" maxlength="50" >
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" name="password" class="form-control" placeholder="Please input password." value="123456" maxlength="50" >
+                    <input type="password" name="password" class="form-control" placeholder="Please input password." value="credithc@admin" maxlength="50" >
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
 

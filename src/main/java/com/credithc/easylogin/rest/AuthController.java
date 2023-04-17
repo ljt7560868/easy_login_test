@@ -63,7 +63,7 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         log.error("login fail, username/password is illegal, username:{},password:{}", username, password);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        throw new RuntimeException("login fail, username/password is illegal");
     }
 
 
