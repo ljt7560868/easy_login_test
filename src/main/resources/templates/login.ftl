@@ -15,7 +15,7 @@
         <div class="login-logo">
             <a><b>HC</b>chatGPT</a>
         </div>
-        <form action="sso/auth/login">
+        <form action="/sso/auth/login" method="post">
             <div class="login-box-body">
                 <p class="login-box-msg">统一认证中心</p>
                 <div class="form-group has-feedback">

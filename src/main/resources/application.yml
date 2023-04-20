@@ -31,8 +31,9 @@ server:
       force: true
 
 login:
-  username: chatgpt
-  password: credithc@admin
+  userInfoMap:
+    chatgpt: credithc@admin
+    gptadmin: idg@admin
   token: 7cp4VkZ3Nju1AOjy
 
 thymeleaf:
