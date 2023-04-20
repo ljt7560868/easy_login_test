@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>统一认证中心</title>
 
     <#import "common/common.macro.ftl" as netCommon>
     <@netCommon.commonStyle />
-    <link rel="stylesheet" href="/static/adminlte/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="/sso/static/adminlte/plugins/iCheck/square/blue.css">
 
 </head>
 <body class="hold-transition login-page">
@@ -15,15 +15,15 @@
         <div class="login-logo">
             <a><b>HC</b>chatGPT</a>
         </div>
-        <form action="/auth/login">
+        <form action="sso/auth/login">
             <div class="login-box-body">
                 <p class="login-box-msg">统一认证中心</p>
                 <div class="form-group has-feedback">
-                    <input type="text" name="username" class="form-control" placeholder="Please input username." value="user" maxlength="50" >
+                    <input type="text" name="username" class="form-control" placeholder="Please input username." value="chatgpt" maxlength="50" >
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" name="password" class="form-control" placeholder="Please input password." value="123456" maxlength="50" >
+                    <input type="password" name="password" class="form-control" placeholder="Please input password." value="credithc@admin" maxlength="50" >
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
 
@@ -42,6 +42,6 @@
 
 </body>
 <@netCommon.commonScript />
-<script src="/static/adminlte/plugins/iCheck/icheck.min.js"></script>
-<script src="/static/js/login.1.js"></script>
+<script src="/sso/static/adminlte/plugins/iCheck/icheck.min.js"></script>
+<script src="/sso/static/js/login.1.js"></script>
 </html>

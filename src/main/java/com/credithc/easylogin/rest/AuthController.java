@@ -1,7 +1,5 @@
 package com.credithc.easylogin.rest;
 
-import com.credithc.easylogin.common.Result;
-import com.credithc.easylogin.common.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @Author: lvjietao
@@ -51,19 +50,19 @@ public class AuthController {
 
 
     @GetMapping("/login")
-    public ResponseEntity<?> login(@RequestParam(name = "username") String username,
+    public void login(@RequestParam(name = "username") String username,
                                    @RequestParam(name = "password") String password,
-                        HttpServletResponse response) {
+                        HttpServletResponse response) throws IOException {
         if (StringUtils.equals(this.username, username) && StringUtils.equals(this.password, password)) {
             log.info("login success, username:{}", username);
             Cookie cookie = new Cookie("AccessToken", this.token);
             cookie.setMaxAge(60 * 60);
             cookie.setPath("/");
             response.addCookie(cookie);
-            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            log.error("login fail, username/password is illegal, username:{},password:{}", username, password);
         }
-        log.error("login fail, username/password is illegal, username:{},password:{}", username, password);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        response.sendRedirect("/");
     }
 
 
