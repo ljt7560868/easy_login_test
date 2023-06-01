@@ -59,7 +59,7 @@ public class AuthController {
                 && StringUtils.equals(userInfoMap.get(username), password)) {
             log.info("login success, username:{}", username);
             Cookie cookie = new Cookie("AccessToken", appConfig.getToken());
-            cookie.setMaxAge(60 * 60);
+            cookie.setMaxAge(60 * 60 * 2);
             cookie.setPath("/");
             response.addCookie(cookie);
             response.sendRedirect("/");

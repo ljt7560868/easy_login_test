@@ -35,6 +35,7 @@ login:
     chatgpt: credithc@admin
     gptadmin: idg@admin
     lvjietao: 1qazxsw2@admin
+    baoli: baoli@admin
   token: 7cp4VkZ3Nju1AOjy
 
 thymeleaf:
