@@ -53,6 +53,20 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.80</version>
         </dependency>
+        <dependency>
+            <groupId>com.credithc</groupId>
+            <artifactId>idg-rabbit-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.credithc</groupId>
+            <artifactId>platform-security-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
