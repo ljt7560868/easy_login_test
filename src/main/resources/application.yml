@@ -24,7 +24,7 @@ spring:
   resources:
     static-locations: classpath:/static/
 server:
-  port: 8080
+  port: 8088
   servlet:
     context-path: /sso
     encoding:
@@ -42,3 +42,17 @@ thymeleaf:
   prefix: classpath:/templates/
   suffix: .ftl
   cache: false
+
+# xxljob配置
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    accessToken: peru_xxl_job_token
+    executor:
+      appname: my-test-executor
+      address:
+      ip:
+      port: 9999
+      logpath: /opt/logs/applogs/xxl-job/jobhandler
+      logretentiondays: 30
